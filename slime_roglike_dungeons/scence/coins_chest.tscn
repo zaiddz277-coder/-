@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dsd8mx2w8xu2k"]
+
+[ext_resource type="PackedScene" uid="uid://cog230u77t27r" path="res://scence/coin_chest.tscn" id="1_3ycdx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_seu5w"]
+
+[node name="StaticBody2D" type="StaticBody2D"]
+
+[node name="coin_chest" parent="." instance=ExtResource("1_3ycdx")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_seu5w")

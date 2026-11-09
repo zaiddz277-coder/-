@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://cog230u77t27r"]
+
+[ext_resource type="Script" path="res://coin_chest.gd" id="1_7afpg"]
+[ext_resource type="Texture2D" uid="uid://cd76otshjy8w" path="res://arts/item/chest_animation.png" id="2_0i6tv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uns54"]
+atlas = ExtResource("2_0i6tv")
+region = Rect2(0, 16, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n0b2w"]
+atlas = ExtResource("2_0i6tv")
+region = Rect2(0, 0, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k5cxa"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uns54")
+}],
+"loop": true,
+"name": &"chest_close",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n0b2w")
+}],
+"loop": true,
+"name": &"chest_open",
+"speed": 0.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vaq8"]
+radius = 13.0
+
+[node name="coin_chest" type="Node2D"]
+script = ExtResource("1_7afpg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_k5cxa")
+animation = &"chest_close"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_2vaq8")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, 1)
+
+[node name="Marker2D2" type="Marker2D" parent="."]
+position = Vector2(-8, 7)
+
+[node name="Marker2D3" type="Marker2D" parent="."]
+position = Vector2(6, 7)
+
+[node name="Marker2D4" type="Marker2D" parent="."]
+position = Vector2(11, 4)
+gizmo_extents = 0.0
+
+[node name="Marker2D5" type="Marker2D" parent="."]
+position = Vector2(-9, 4)
+
+[node name="Marker2D6" type="Marker2D" parent="."]
+position = Vector2(1, 10)
+
+[node name="Marker2D7" type="Marker2D" parent="."]
+position = Vector2(0, 5)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
